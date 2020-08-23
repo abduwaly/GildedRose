@@ -20,5 +20,16 @@ class DemoApplicationTests {
 		Assertions.assertThat(product.getSellIn()).isEqualTo(23);
 	}
 
+	@Test
+	void testIsQualityValid() {
+		Product product = new Product("test", 23, 40.0);
+		Assertions.assertThat(product.isQualityValid()).isEqualTo(true);
 
+		product.setQuality(51);
+		Assertions.assertThat(product.isQualityValid()).isEqualTo(false);
+
+		product.setQuality(-1);
+		Assertions.assertThat(product.isQualityValid()).isEqualTo(false);
+
+	}
 }
