@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Date;
 
 @SpringBootTest
@@ -19,7 +19,7 @@ class DemoApplicationTests {
 	void testCreateProduct() {
 		Product product = new Product("test", 23, 40.0);
 		Assertions.assertThat(product.getName()).isEqualTo("test");
-		Assertions.assertThat(product.getQuality()).isEqualTo(40.0);
+		Assertions.assertThat(product.getQuality(LocalDate.now())).isEqualTo(40.0);
 		Assertions.assertThat(product.getSellIn()).isEqualTo(23);
 	}
 
@@ -38,10 +38,11 @@ class DemoApplicationTests {
 	@Test
 	void testGetQuality() {
 		Product product = new Product("test", 23, 40.0);
-		Date mockDate1 = new Date(product.getCreationDate().getTime() + 86400000);
-		Assertions.assertThat(product.getQuality(mockDate1)).isEqualTo(39);
 
-		Date mockDate2 = new Date(product.getCreationDate().getTime() + 86400000*5);
-		Assertions.assertThat(product.getQuality(mockDate2)).isEqualTo(35);
+		LocalDate mockDate1 = LocalDate.now().plusDays(1);
+		Assertions.assertThat(product.getQuality(mockDate1)).isEqualTo(39.0);
+
+		LocalDate mockDate2 = LocalDate.now().plusDays(5);
+		Assertions.assertThat(product.getQuality(mockDate2)).isEqualTo(35.0);
 	}
 }

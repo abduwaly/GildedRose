@@ -1,15 +1,19 @@
 package com.example.demo.entity;
 
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Product {
 
     private String name;
     private int sellIn;
     private double quality;
-    private Date creationDate;
+    private LocalDate creationDate;
 
-    public Date getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
@@ -17,7 +21,7 @@ public class Product {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
-        this.creationDate = new Date();
+        this.creationDate = LocalDate.now();
     }
 
     public String getName() {
@@ -36,8 +40,9 @@ public class Product {
         this.sellIn = sellIn;
     }
 
-    public double getQuality() {
-        return quality;
+    public double getQuality(LocalDate today) {
+        long daysBetween = DAYS.between(this.creationDate, today);
+        return this.quality - daysBetween;
     }
 
     public void setQuality(float quality) {
@@ -54,6 +59,7 @@ public class Product {
     }
 
     public boolean isQualityValid() {
-        return this.getQuality() >= 0 && this.getQuality() <= 50;
+        LocalDate date = LocalDate.now();
+        return this.getQuality(date) >= 0 && this.getQuality(date) <= 50;
     }
 }
