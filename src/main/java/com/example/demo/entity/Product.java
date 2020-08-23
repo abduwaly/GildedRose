@@ -1,15 +1,23 @@
 package com.example.demo.entity;
 
+import java.util.Date;
+
 public class Product {
 
     private String name;
     private int sellIn;
     private double quality;
+    private Date creationDate;
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
 
     public Product(String name, int sellIn, double quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
+        this.creationDate = new Date();
     }
 
     public String getName() {
