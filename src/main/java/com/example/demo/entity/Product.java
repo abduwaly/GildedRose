@@ -42,7 +42,15 @@ public class Product {
 
     public double getQuality(LocalDate today) {
         long daysBetween = DAYS.between(this.creationDate, today);
-        return this.quality - daysBetween;
+
+        double result;
+        if(daysBetween <= sellIn){
+            return this.quality - daysBetween;
+        } else {
+            result = this.quality - sellIn - 2 * (daysBetween-sellIn);
+        }
+
+        return result < 0 ? 0 : result;
     }
 
     public void setQuality(float quality) {
