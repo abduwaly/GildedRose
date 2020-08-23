@@ -44,4 +44,8 @@ public class Product {
                 ", quality=" + quality +
                 '}';
     }
+
+    public boolean isQualityValid() {
+        return this.getQuality() >= 0 && this.getQuality() <= 50;
+    }
 }
