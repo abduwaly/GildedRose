@@ -8,10 +8,10 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Product {
 
-    private String name;
-    private int sellIn;
-    private double quality;
-    private LocalDate creationDate;
+    protected String name;
+    protected int sellIn;
+    protected double quality;
+    protected LocalDate creationDate;
 
     public LocalDate getCreationDate() {
         return creationDate;
@@ -44,10 +44,10 @@ public class Product {
         long daysBetween = DAYS.between(this.creationDate, today);
 
         double result;
-        if(daysBetween <= sellIn){
+        if(daysBetween <= this.sellIn){
             return this.quality - daysBetween;
         } else {
-            result = this.quality - sellIn - 2 * (daysBetween-sellIn);
+            result = this.quality - this.sellIn - 2 * (daysBetween-this.sellIn);
         }
 
         return result < 0 ? 0 : result;
