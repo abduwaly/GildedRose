@@ -69,5 +69,11 @@ class DemoApplicationTests {
 		LocalDate mockDate2 = LocalDate.now().plusDays(7);
 		Assertions.assertThat(bp.getQuality(mockDate2)).isEqualTo(19);
 
+		LocalDate mockDate3 = LocalDate.now().plusDays(12);
+		Assertions.assertThat(bp.getQuality(mockDate1)).isEqualTo(34);
+
+		LocalDate mockDate4 = LocalDate.now().plusDays(16);
+		Assertions.assertThat(bp.getQuality(mockDate2)).isEqualTo(0);
+
 	}
 }
