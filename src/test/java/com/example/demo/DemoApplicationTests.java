@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.entity.BackstagePass;
 import com.example.demo.entity.Product;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
