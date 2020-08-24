@@ -51,4 +51,10 @@ class DemoApplicationTests {
 		LocalDate mockDate4 = LocalDate.now().plusDays(55);
 		Assertions.assertThat(product.getQuality(mockDate4)).isEqualTo(0);
 	}
+
+	@Test
+	void testCreateBackstagePass() {
+		BackstagePass bp = new BackstagePass("testBP", 15, 25);
+		Assertions.assertThat(bp.getName()).isEqualTo("testBP");
+	}
 }
