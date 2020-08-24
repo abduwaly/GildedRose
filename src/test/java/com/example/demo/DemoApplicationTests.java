@@ -58,4 +58,16 @@ class DemoApplicationTests {
 		BackstagePass bp = new BackstagePass("testBP", 15, 25);
 		Assertions.assertThat(bp.getName()).isEqualTo("testBP");
 	}
+
+	@Test
+	void testBackstagePassQuality() {
+		BackstagePass bp = new BackstagePass("testBP", 15, 5);
+
+		LocalDate mockDate1 = LocalDate.now().plusDays(2);
+		Assertions.assertThat(bp.getQuality(mockDate1)).isEqualTo(9);
+
+		LocalDate mockDate2 = LocalDate.now().plusDays(7);
+		Assertions.assertThat(bp.getQuality(mockDate2)).isEqualTo(19);
+
+	}
 }
