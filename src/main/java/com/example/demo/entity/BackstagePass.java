@@ -17,6 +17,12 @@ public class BackstagePass extends Product {
         double result = this.quality;
         if(this.sellIn - daysBetween >= 5){
             result = this.quality + daysBetween * 2;
+        } else if(this.sellIn - daysBetween < 5){
+            if(this.sellIn - daysBetween <= 0){
+                result = 0;
+            }else {
+                result = this.quality + ((daysBetween-5) * 2) + ((5 - (this.sellIn - daysBetween)) * 3);
+            }
         }
 
         return result >= 50 ? 50 : result;
